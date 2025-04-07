@@ -8,15 +8,20 @@ import HubView from './Features/HubView'
 import ZoomedView from './Features/ZoomedView'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const date = new Date();
+  const format = date.toLocaleDateString();
+  const formattedDay = date.toLocaleDateString("en-US", { weekday: "long" });
 
+  const time = date.toLocaleTimeString()
   return (
     <>
       <Flex h="100vh" direction="row">
       <Sidebar />
       <Flex flex="1" direction="column" p={4}>
         <Flex justify="space-between" mb={4}>
-          <Box fontWeight="bold">Mon Oct 07 2024 16:39:07</Box>
+        <Box fontWeight="bold">Day : {formattedDay}</Box>
+          <Box fontWeight="bold">Date : {format}</Box>
+          <Box fontWeight="bold">Time : {time}</Box>
           <HubView />
         </Flex>
         <ZoomedView />
