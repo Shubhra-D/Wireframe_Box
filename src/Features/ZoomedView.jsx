@@ -2,6 +2,8 @@ import { Box, Button, HStack, Image, Text } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import slideImage from '../assets/slideImage.png'
 import axios from 'axios';
+import { AiOutlineZoomIn, AiOutlineZoomOut } from 'react-icons/ai';
+import { FiRefreshCcw } from 'react-icons/fi';
 const ZoomedView = () => {
   const [detections,setDetections] = useState([]);
   const [zoom, setZoom] = useState(1);
@@ -80,9 +82,9 @@ const ZoomedView = () => {
         <Box borderRadius={'2xl'} flex="1" position="relative" overflow="hidden" border="1px solid #ccc">
         {/* Zoom Controls */}
         <HStack spacing={2} p={2}>
-          <Button size="sm" onClick={() => setZoom((z) => Math.min(z + 0.2, 5))} bg={'green.400'} color={'whiteAlpha.900'}>Zoom In</Button>
-          <Button size="sm" onClick={() => setZoom((z) => Math.max(z - 0.2, 0.5))} bg={'green.400'} color={'whiteAlpha.900'}>Zoom Out</Button>
-          <Button size="sm" onClick={() => { setZoom(1); setPosition({ x: 0, y: 0 }); }} bg={'green.400'} color={'whiteAlpha.900'}>Reset</Button>
+          <Button size="sm" onClick={() => setZoom((z) => Math.min(z + 0.2, 5))} bg={'green.400'} color={'whiteAlpha.900'}><AiOutlineZoomIn/>Zoom In</Button>
+          <Button size="sm" onClick={() => setZoom((z) => Math.max(z - 0.2, 0.5))} bg={'green.400'} color={'whiteAlpha.900'}><AiOutlineZoomOut/>Zoom Out</Button>
+          <Button size="sm" onClick={() => { setZoom(1); setPosition({ x: 0, y: 0 }); }} bg={'green.400'} color={'whiteAlpha.900'}><FiRefreshCcw/>Reset</Button>
         </HStack>
   
         {/* Zoomable + Draggable View */}
